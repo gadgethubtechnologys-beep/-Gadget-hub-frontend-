@@ -1,0 +1,64 @@
+@import "./banner.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 26, 26, 26;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  /* Brand colors - Refined Luxury Theme */
+  --brand: #be185d; /* Elegant Deep Rose */
+  --brand-dark: #9d174d;
+  --brand-light: #fffdf5; /* Rich Luxury Cream */
+  --brand-accent: #fce7f3; /* Soft Rose */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 330 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 330 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 330 10% 10%;
+    /* primary = Pink */
+    --primary: 330 72% 51%;
+    --primary-foreground: 0 0% 100%;
+    /* secondary = Soft pink */
+    --secondary: 330 81% 96%;
+    --secondary-foreground: 330 72% 51%;
+    --muted: 330 20% 96%;
+    --muted-foreground: 330 10% 40%;
+    --accent: 330 81% 96%;
+    --accent-foreground: 330 72% 51%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 330 20% 90%;
+    --input: 330 20% 90%;
+    --ring: 330 72% 51%;
+    --chart-1: 330 72% 51%;
+    --chart-2: 330 60% 40%;
+    --chart-3: 330 50% 30%;
+    --chart-4: 330 40% 60%;
+    --chart-5: 330 30% 70%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-montserrat;
+  }
+}
