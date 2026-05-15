@@ -84,8 +84,14 @@ export default function HeroBanner() {
     },
     [animating, current]
   );
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // set initial value on client
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (!api) {
@@ -442,7 +448,7 @@ export default function HeroBanner() {
 
               // }}
               style={{
-                backgroundImage: `url(${isMobile ? s.mobileImage : s.desktopImage})`,
+                backgroundImage: `url(${isMobile && s.mobileImage ? s.mobileImage : s.desktopImage})`,
                 backgroundSize: isMobile ? (s.mobileFit || 'cover') : (s.desktopFit || 'cover'),
                 backgroundPosition: isMobile ? (s.mobilePosition || 'center') : (s.desktopPosition || 'center'),
               }}

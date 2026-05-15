@@ -56,12 +56,7 @@ const Footer = () => {
                 ))}
               </div>
             </div>
-            <div className="hidden lg:grid col-span-9 lg:grid-cols-4 lg:pl-10">
-              <LinksSection />
-            </div>
-            <div className="grid lg:hidden grid-cols-2 sm:grid-cols-4">
-              <LinksSection />
-            </div>
+            {/* LinksSection removed per request */}
           </nav>
           <hr className="h-[1px] border-t-brand/20 mb-6" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
