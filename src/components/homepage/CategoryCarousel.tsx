@@ -16,6 +16,38 @@ import {
 
 type Category = { _id: string; name: string; image?: string };
 
+const FALLBACK_IMAGES: Record<string, string> = {
+  "t shirts": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80",
+  "shirts": "https://images.unsplash.com/photo-1596755094514-f87e32f85e23?w=500&q=80",
+  "baggys": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80",
+  "baggys ( all type)": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80",
+  "cap": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&q=80",
+  "watches": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
+  "socks": "https://images.unsplash.com/photo-1582966772680-860e372bb558?w=500&q=80",
+  "ring": "https://images.unsplash.com/photo-1605100804763-247f66126be8?w=500&q=80",
+  "neckchain": "https://images.unsplash.com/photo-1599643478524-fb9122870167?w=500&q=80",
+  "hand band": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80",
+  "studs": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&q=80",
+  "cream emirates": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500&q=80",
+  "gel face wash": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80",
+  "the face shop": "https://images.unsplash.com/photo-1571781526291-c477eb311dc6?w=500&q=80",
+  "skin care product": "https://images.unsplash.com/photo-1615397323041-331e84ce00b9?w=500&q=80",
+  "bright pro": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80"
+};
+
+const getDisplayImage = (cat: Category) => {
+  if (cat.image && cat.image.startsWith("http")) return cat.image;
+  const key = cat.name.toLowerCase().trim();
+  if (FALLBACK_IMAGES[key]) return FALLBACK_IMAGES[key];
+  
+  // Find partial match
+  const partialMatch = Object.keys(FALLBACK_IMAGES).find(k => key.includes(k));
+  if (partialMatch) return FALLBACK_IMAGES[partialMatch];
+  
+  // Default apparel image
+  return "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&q=80";
+};
+
 export default function CategoryCarousel() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,7 +95,7 @@ export default function CategoryCarousel() {
           <div className="flex gap-4 overflow-hidden">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="flex flex-col items-center gap-3 animate-pulse shrink-0">
-                <div className="w-[160px] h-[160px] md:w-[220px] md:h-[220px] rounded-3xl bg-brand/5" />
+                <div className="w-[160px] h-[220px] md:w-[220px] md:h-[300px] rounded-2xl bg-brand/5" />
                 <div className="h-4 w-24 bg-brand/5 rounded" />
               </div>
             ))}
@@ -77,20 +109,14 @@ export default function CategoryCarousel() {
                     href={`/shop?categories=${encodeURIComponent(cat.name)}`}
                     className="flex flex-col items-center gap-4 group"
                   >
-                    <div className="relative w-[150px] h-[150px] sm:w-[220px] sm:h-[220px] rounded-[40px] overflow-hidden bg-brand-light border border-black/5 shadow-sm group-hover:shadow-2xl group-hover:shadow-brand/20 transition-all duration-500 shrink-0">
-                      {cat.image ? (
-                        <Image
-                          src={cat.image}
-                          alt={cat.name}
-                          fill
-                          className="object-cover scale-100 group-hover:scale-110 transition-all duration-700 ease-out"
-                          unoptimized
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-4xl">
-                          🛍️
-                        </div>
-                      )}
+                    <div className="relative w-[150px] h-[200px] sm:w-[220px] sm:h-[300px] rounded-2xl overflow-hidden bg-brand-light border border-black/5 shadow-sm group-hover:shadow-2xl group-hover:shadow-brand/20 transition-all duration-500 shrink-0">
+                      <Image
+                        src={getDisplayImage(cat)}
+                        alt={cat.name}
+                        fill
+                        className="object-cover scale-100 group-hover:scale-110 transition-all duration-700 ease-out"
+                        unoptimized
+                      />
                       {/* Premium Overlay */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                     </div>

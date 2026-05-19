@@ -10,17 +10,17 @@ const socialsData: SocialNetworks[] = [
   {
     id: 1,
     icon: <FaFacebookF />,
-    url: "https://www.facebook.com/share/1E1PGmPonR/?mibextid=wwXIfr",
+    url: "#",
   },
   {
     id: 2,
     icon: <FaInstagram />,
-    url: "https://www.instagram.com/creamxemirates_official_?igsh=NXk1djh2bjdvYW0=",
+    url: "https://www.instagram.com/_lexvaro_?igsh=MzBkbTQxNGw4bHd6&utm_source=qr",
   },
   {
     id: 3,
     icon: <FaWhatsapp />,
-    url: "https://wa.me/918075721347",
+    url: "https://wa.me/917306203782",
   },
 ];
 
@@ -37,12 +37,13 @@ const Footer = () => {
                   "text-[28px] lg:text-[32px] mb-6 text-black leading-tight",
                 ])}
               >
-                CREAM X EMIRATES
+                LEXVARO
               </h1>
-              <p className="text-black/70 text-sm mb-9">
-                At Cream X Emirates, we bring the finest luxury and wellness products
-                from nature to your table. Experience the purest flavors and
-                premium quality, just as nature intended.
+              <p className="text-black/70 text-sm mb-4">
+                At Lexvaro, we bring you the finest collection of premium apparel and accessories. Discover your style and own the moment with our exclusive range.
+              </p>
+              <p className="text-black/70 text-sm font-medium mb-9">
+                <a href="mailto:hello@lexvaro.in">hello@lexvaro.in</a>
               </p>
               <div className="flex items-center">
                 {socialsData.map((social) => (
@@ -61,10 +62,10 @@ const Footer = () => {
           <hr className="h-[1px] border-t-brand/20 mb-6" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-black/50 text-xs md:text-sm font-medium">
-              Cream X Emirates © 2024-2026. All Rights Reserved.
+              Lexvaro © 2024-2026. All Rights Reserved.
             </p>
             <p className="text-black/40 font-bold text-[10px] md:text-xs uppercase tracking-[0.4em]">
-              Grace in every taste
+              Own the Moment
             </p>
           </div>
         </div>

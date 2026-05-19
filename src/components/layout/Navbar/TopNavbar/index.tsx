@@ -16,8 +16,8 @@ const TopNavbar = () => {
             className="flex items-center mr-3 lg:mr-10"
           >
           <Image
-            src="/images/logo.svg"
-            alt="Cream X Emirates Logo"
+            src="/images/logo.png"
+            alt="Lexvaro Logo"
             width={160}
             height={160}
             className="object-contain h-14 md:h-20 w-auto"

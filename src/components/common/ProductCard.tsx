@@ -18,8 +18,8 @@ const ProductCard = ({ data, priority = false, isCircle = false }: ProductCardPr
       <div
         className={
           isCircle
-            ? "relative bg-brand-light rounded-[40px] w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[240px] md:h-[240px] lg:w-[280px] lg:h-[280px] xl:w-[320px] xl:h-[320px] mx-auto mb-4 overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500"
-            : "relative bg-brand-light rounded-[20px] w-full aspect-square mb-2.5 xl:mb-4 overflow-hidden border border-black/5"
+            ? "relative bg-brand-light rounded-2xl w-[150px] h-[200px] sm:w-[200px] sm:h-[266px] md:w-[240px] md:h-[320px] lg:w-[280px] lg:h-[373px] xl:w-[320px] xl:h-[426px] mx-auto mb-4 overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500"
+            : "relative bg-brand-light rounded-2xl w-full aspect-[4/5] mb-2.5 xl:mb-4 overflow-hidden border border-black/5 shadow-sm hover:shadow-md transition-all duration-300"
         }
       >
         <Image
