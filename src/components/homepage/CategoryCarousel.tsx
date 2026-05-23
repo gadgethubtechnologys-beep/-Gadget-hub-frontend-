@@ -55,21 +55,40 @@ export default function CategoryCarousel() {
 
   useEffect(() => {
     if (!api) { setLoading(false); return; }
+
     fetch(`${api}/category`)
-      .then(res => {
-        if (!res.ok || !res.headers.get("content-type")?.includes("application/json")) {
-          throw new Error("Invalid response from server");
-        }
-        return res.json();
-      })
-      .then(data => {
-        if (data.categories) setCategories(data.categories);
-      })
-      .catch(err => {
-        console.error("Failed to fetch categories:", err);
-      })
-      .finally(() => setLoading(false));
-  }, [api]);
+  .then(res => {
+    if (
+      !res.ok ||
+      !res.headers.get("content-type")?.includes("application/json")
+    ) {
+      throw new Error("Invalid response from server");
+    }
+
+    return res.json();
+  })
+
+  .then(data => {
+
+    console.log("CATEGORY API:", data);
+
+    if (Array.isArray(data)) {
+      setCategories(data);
+    }
+
+    else if (data.categories) {
+      setCategories(data.categories);
+    }
+
+  })
+
+  .catch(err => {
+    console.error("Failed to fetch categories:", err);
+  })
+
+  .finally(() => setLoading(false));
+
+}, [api]);
 
   if (!loading && categories.length === 0) return null;
 
