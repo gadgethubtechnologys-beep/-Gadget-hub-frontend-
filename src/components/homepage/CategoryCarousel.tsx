@@ -36,16 +36,33 @@ const FALLBACK_IMAGES: Record<string, string> = {
 };
 
 const getDisplayImage = (cat: Category) => {
-  if (cat.image && cat.image.startsWith("http")) return cat.image;
+  const api = process.env.NEXT_PUBLIC_API_URL || 'https://api.lexvaro.in/api';
+  const apiBase = api.replace(/\/api\/?$/, '');
+
+  const raw = cat.image || '';
+  const resolve = (r: string) => {
+    if (!r) return '';
+    if (r.startsWith('data:')) return r;
+    if (r.startsWith('//')) return `https:${r}`;
+    if (r.startsWith('http://')) return r.replace('http://', 'https://');
+    if (r.startsWith('https://')) return r;
+    if (r.startsWith('/')) return `${apiBase}${r}`;
+    if (r.includes('.') && !r.includes(' ')) return `https://${r}`;
+    return r;
+  };
+
+  const resolved = resolve(raw);
+  if (resolved && resolved.startsWith('http')) return resolved;
+
   const key = cat.name.toLowerCase().trim();
   if (FALLBACK_IMAGES[key]) return FALLBACK_IMAGES[key];
-  
+
   // Find partial match
   const partialMatch = Object.keys(FALLBACK_IMAGES).find(k => key.includes(k));
   if (partialMatch) return FALLBACK_IMAGES[partialMatch];
-  
+
   // Default apparel image
-  return "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&q=80";
+  return 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&q=80';
 };
 
 export default function CategoryCarousel() {
