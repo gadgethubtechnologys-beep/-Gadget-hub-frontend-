@@ -9,8 +9,6 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
 import { NavMenu } from "../navbar.types";
 import {
   Accordion,
@@ -36,8 +34,15 @@ const ResTopNavbar = ({ data }: { data: NavMenu }) => {
         <SheetHeader className="mb-10">
           <SheetTitle asChild>
             <SheetClose asChild>
-              <Link href="/" className={cn([integralCF.className, "text-2xl"])}>
-                Easy com
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/gadget-logo.jpg"
+                  alt="Gadget Hub"
+                  width={140}
+                  height={120}
+                  className="object-contain h-12 w-auto"
+                  priority
+                />
               </Link>
             </SheetClose>
           </SheetTitle>

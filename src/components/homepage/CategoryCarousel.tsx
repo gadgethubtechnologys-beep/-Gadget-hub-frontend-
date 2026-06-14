@@ -36,7 +36,7 @@ const FALLBACK_IMAGES: Record<string, string> = {
 };
 
 const getDisplayImage = (cat: Category) => {
-  const api = process.env.NEXT_PUBLIC_API_URL || 'https://api.lexvaro.in/api';
+  const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5002/api';
   const apiBase = api.replace(/\/api\/?$/, '');
 
   const raw = cat.image || '';
@@ -68,7 +68,7 @@ const getDisplayImage = (cat: Category) => {
 export default function CategoryCarousel() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
-  const api = process.env.NEXT_PUBLIC_API_URL;
+  const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5002/api';
 
   useEffect(() => {
     if (!api) { setLoading(false); return; }

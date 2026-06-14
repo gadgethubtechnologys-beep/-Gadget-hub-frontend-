@@ -73,7 +73,7 @@ export const cartsSlice = createSlice({
           state.totalPrice + action.payload.price * action.payload.quantity;
         state.adjustedTotalPrice =
           state.adjustedTotalPrice +
-          calcAdjustedTotalPrice(state.totalPrice, action.payload);
+          calcAdjustedTotalPrice(action.payload.price, action.payload);
         return;
       }
 
@@ -109,7 +109,7 @@ export const cartsSlice = createSlice({
           state.totalPrice + action.payload.price * action.payload.quantity;
         state.adjustedTotalPrice =
           state.adjustedTotalPrice +
-          calcAdjustedTotalPrice(state.totalPrice, action.payload);
+          calcAdjustedTotalPrice(action.payload.price, action.payload);
         return;
       }
 
@@ -122,7 +122,7 @@ export const cartsSlice = createSlice({
         state.totalPrice + action.payload.price * action.payload.quantity;
       state.adjustedTotalPrice =
         state.adjustedTotalPrice +
-        calcAdjustedTotalPrice(state.totalPrice, action.payload);
+        calcAdjustedTotalPrice(action.payload.price, action.payload);
     },
     removeCartItem: (state, action: PayloadAction<RemoveCartItem>) => {
       if (state.cart === null) return;

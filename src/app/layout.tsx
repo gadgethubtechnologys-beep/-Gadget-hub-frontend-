@@ -15,12 +15,17 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Lexvaro",
-  description: "Grace in every taste",
+  title: "Gadget Hub",
+  description: "Premium CCTV, electrical, and computer solutions for homes and businesses.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+    shortcut: "/favicon.png",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#db2777",
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
@@ -31,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${integralCF.variable} font-sans flex flex-col min-h-screen`}>
-        <HolyLoader color="#db2777" />
+        <HolyLoader color="#1a56db" />
         <Providers>
           {/* Navbar */}
           <TopNavbar />

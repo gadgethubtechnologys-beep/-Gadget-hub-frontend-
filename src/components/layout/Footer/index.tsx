@@ -1,26 +1,20 @@
-import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
 import { SocialNetworks } from "./footer.types";
-import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaYoutube, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 import LinksSection from "./LinksSection";
 import LayoutSpacing from "./LayoutSpacing";
 
 const socialsData: SocialNetworks[] = [
   {
     id: 1,
-    icon: <FaFacebookF />,
-    url: "#",
+    icon: <FaYoutube />,
+    url: "https://youtube.com/@gadgethubinnovationandtechnolo?si=r4UQ7ZdcicCbX_7H",
   },
   {
     id: 2,
-    icon: <FaInstagram />,
-    url: "https://www.instagram.com/_lexvaro_?igsh=MzBkbTQxNGw4bHd6&utm_source=qr",
-  },
-  {
-    id: 3,
     icon: <FaWhatsapp />,
-    url: "https://wa.me/917306203782",
+    url: "https://wa.me/918848276507",
   },
 ];
 
@@ -31,19 +25,20 @@ const Footer = () => {
         <div className="max-w-frame mx-auto">
           <nav className="lg:grid lg:grid-cols-12 mb-8">
             <div className="flex flex-col lg:col-span-3 lg:max-w-[248px]">
-              <h1
-                className={cn([
-                  integralCF.className,
-                  "text-[28px] lg:text-[32px] mb-6 text-black leading-tight",
-                ])}
-              >
-                LEXVARO
-              </h1>
+              <Link href="/" className="mb-6">
+                <Image
+                  src="/images/gadget-logo.jpg"
+                  alt="Gadget Hub"
+                  width={160}
+                  height={140}
+                  className="object-contain h-16 w-auto"
+                />
+              </Link>
               <p className="text-black/70 text-sm mb-4">
-                At Lexvaro, we bring you the finest collection of premium apparel and accessories. Discover your style and own the moment with our exclusive range.
+                Gadget Hub CCTV Store provides premium CCTV, electrical, and computer solutions for homes and businesses. One store for all your security and technology needs.
               </p>
               <p className="text-black/70 text-sm font-medium mb-9">
-                <a href="mailto:hello@lexvaro.in">hello@lexvaro.in</a>
+                <a href="mailto:hello@gadgethub.in">hello@gadgethub.in</a>
               </p>
               <div className="flex items-center">
                 {socialsData.map((social) => (
@@ -62,10 +57,10 @@ const Footer = () => {
           <hr className="h-[1px] border-t-brand/20 mb-6" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-black/50 text-xs md:text-sm font-medium">
-              Lexvaro © 2024-2026. All Rights Reserved.
+              Gadget Hub © 2024-2026. All Rights Reserved.
             </p>
             <p className="text-black/40 font-bold text-[10px] md:text-xs uppercase tracking-[0.4em]">
-              Own the Moment
+              One Store. All Solutions.
             </p>
           </div>
         </div>
