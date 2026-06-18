@@ -44,11 +44,11 @@ const ProductListSec = ({ title, data, viewAllLink, isCircle }: ProductListSecPr
           }}
           className="w-full mb-6 md:mb-9"
         >
-          <CarouselContent className="mx-4 xl:mx-0 space-x-4 sm:space-x-5">
+          <CarouselContent className="-ml-4 sm:-ml-5">
             {data.map((product) => (
               <CarouselItem
                 key={product.id}
-                className="w-full max-w-[198px] sm:max-w-[295px] pl-0"
+                className="w-full max-w-[198px] sm:max-w-[295px] pl-4 sm:pl-5 basis-auto"
               >
                 <ProductCard data={product} isCircle={isCircle} />
               </CarouselItem>

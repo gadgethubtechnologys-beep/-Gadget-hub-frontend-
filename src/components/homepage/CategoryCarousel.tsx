@@ -138,9 +138,9 @@ export default function CategoryCarousel() {
           </div>
         ) : (
           <Carousel opts={{ align: "start" }} className="w-full mb-6 md:mb-9">
-            <CarouselContent className="mx-4 xl:mx-0 space-x-6 lg:space-x-8">
-              {categories.map(cat => (
-                <CarouselItem key={cat._id} className="pl-0 basis-auto">
+            <CarouselContent className="-ml-6 lg:-ml-8">
+              {categories.map((cat, idx) => (
+                <CarouselItem key={cat._id} className="pl-6 lg:pl-8 basis-auto">
                   <Link
                     href={`/shop?categories=${encodeURIComponent(cat.name)}`}
                     className="flex flex-col items-center gap-4 group"
@@ -152,6 +152,7 @@ export default function CategoryCarousel() {
                         fill
                         className="object-cover scale-100 group-hover:scale-110 transition-all duration-700 ease-out"
                         unoptimized
+                        priority={idx < 2}
                       />
                       {/* Premium Overlay */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />

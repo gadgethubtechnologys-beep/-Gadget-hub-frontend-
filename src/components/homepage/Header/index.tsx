@@ -163,9 +163,10 @@ export default function HeroBanner() {
           font-family: 'Montserrat', sans-serif;
           position: relative;
           width: 100%;
-          height: 92vh;
-          min-height: 560px;
-          max-height: 900px;
+          height: auto;
+          aspect-ratio: 1600/853;
+          min-height: 350px;
+          max-height: 680px;
           background: var(--brand-light);
           overflow: hidden;
           cursor: default;
@@ -414,12 +415,35 @@ export default function HeroBanner() {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+          .banner-root {
+            height: auto !important;
+            aspect-ratio: 941/1400 !important;
+            min-height: unset !important;
+            max-height: unset !important;
+          }
           .arrow-btn { display: none; }
           .banner-content { padding: 0 5vw; }
           .banner-content.right { justify-content: flex-start; }
           .slide-overlay.right {
             background: linear-gradient(180deg,rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.72) 55%,rgba(255,255,255,0.12) 100%);
+          }
+          .slide-headline {
+            font-size: clamp(1.1rem, 5.5vw, 2.2rem) !important;
+            line-height: 1.15 !important;
+            margin-bottom: 6px !important;
+          }
+          .slide-sub {
+            font-size: clamp(0.7rem, 3vw, 0.85rem) !important;
+            line-height: 1.35 !important;
+            margin-bottom: 8px !important;
+            max-width: 90% !important;
+          }
+          .dots {
+            bottom: 12px !important;
+          }
+          .slide-counter {
+            display: none !important;
           }
         }
       `}</style>
@@ -458,10 +482,10 @@ export default function HeroBanner() {
         })}
 
         {/* overlay */}
-        <div className={`slide-overlay ${slides[current].align}`} />
+        <div className={`slide-overlay ${slides[current]?.align || "left"}`} />
 
         {/* text content — re-mount on slide change to retrigger animations */}
-        <div className={`banner-content ${slides[current].align}`} key={current}>
+        <div className={`banner-content ${slides[current]?.align || "left"}`} key={current}>
           <div className="text-block">
             {/* <span className="slide-tag">{slides[current].tag}</span> */}
 

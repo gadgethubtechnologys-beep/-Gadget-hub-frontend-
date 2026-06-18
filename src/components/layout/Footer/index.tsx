@@ -26,12 +26,13 @@ const Footer = () => {
           <nav className="lg:grid lg:grid-cols-12 mb-8">
             <div className="flex flex-col lg:col-span-3 lg:max-w-[248px]">
               <Link href="/" className="mb-6">
-                <Image
-                  src="/images/gadget-logo.jpg"
+                <img
+                  src="/images/gadget-logo.jpg?v=footer"
                   alt="Gadget Hub"
                   width={160}
                   height={140}
                   className="object-contain h-16 w-auto"
+                  loading="lazy"
                 />
               </Link>
               <p className="text-black/70 text-sm mb-4">
